@@ -16,4 +16,8 @@ RSpec.describe PrefixNotation do
     expect(pn.evaluate('+ + 1 2 30')).to eq 33
   end
 
+  it 'supports all 4 operators' do
+    expect(pn.evaluate('+ + 12 16 * 10 4')).to eq 68
+  end
+
 end
