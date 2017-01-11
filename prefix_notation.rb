@@ -1,11 +1,18 @@
 class PrefixNotation
 
   def evaluate(expression)
-    array = expression.split(' ')
-    if array.size == 1
-      result = array[0].to_i    
-    else
-      result = array[1].to_i + array[2].to_i
+    array = expression.split(' ').reverse
+    stack = []
+    array.each do |element|
+      if element == '+'
+        operand_1 = stack.pop
+        operand_2 = stack.pop
+        result = operand_1 + operand_2
+        stack.push(result)
+      else
+        stack.push(element.to_i)
+      end
     end
+    stack.first
   end
 end
